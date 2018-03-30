@@ -64,7 +64,7 @@ class Embed {
   }
 
   get src() {
-    let path = `/${this.exchange}/${this.currencyPair}`;
+    let path = `/markets/${this.exchange}/${this.currencyPair}`;
     if (this.opts.timePeriod !== null) {
       path += `/${this.opts.timePeriod}`;
     }

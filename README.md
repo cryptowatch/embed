@@ -21,7 +21,7 @@ Include the ES5 build in your page:
 Use the library in the global `cryptowatch` namespace:
 
 ```js
-var chart = new cryptowatch.Embed('bitfinex', 'btcusd');
+var chart = new cryptowatch.Embed('bitfinex', 'btc/usd');
 
 chart.mount('#chart-container');
 ```
@@ -39,7 +39,7 @@ Import package:
 ```js
 import CryptowatchEmbed from 'cryptowatch-embed';
 
-let chart = new CryptowatchEmbed('bitfinex', 'btcusd');
+let chart = new CryptowatchEmbed('bitfinex', 'btc/usd');
 
 chart.mount('#chart-container');
 ```
@@ -49,7 +49,7 @@ chart.mount('#chart-container');
 At minimum, the library requires an exchange and currency pair.
 
 ```js
-var chart = new cryptowatch.Embed('bitfinex', 'btcusd');
+var chart = new cryptowatch.Embed('bitfinex', 'btc/usd');
 ```
 
 A few options can be provided to configure the chart.
@@ -59,7 +59,7 @@ A few options can be provided to configure the chart.
 Fixed dimensions may be defined for the iframe. The default values for both are `100%`.
 
 ```js
-var chart = new cryptowatch.Embed('bitfinex', 'btcusd', {
+var chart = new cryptowatch.Embed('bitfinex', 'btc/usd', {
   width: 800,
   height: 500
 });
@@ -75,7 +75,7 @@ We recommend omitting this option, which will cause the application to use whate
 last chose, or `1h` for new visitors.
 
 ```js
-var chart = new cryptowatch.Embed('bitfinex', 'btcusd', {
+var chart = new cryptowatch.Embed('bitfinex', 'btc/usd', {
   timePeriod: '4H'
 });
 ```
@@ -99,7 +99,7 @@ ishihara
 The default value is `standard`.
 
 ```js
-var chart = new cryptowatch.Embed('bitfinex', 'btcusd', {
+var chart = new cryptowatch.Embed('bitfinex', 'btc/usd', {
   presetColorScheme: 'delek'
 });
 ```

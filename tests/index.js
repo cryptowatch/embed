@@ -6,56 +6,56 @@ var Embed = require('../dist/main.js');
 describe('Embed', function () {
   it('generates the default URL when given no opts', function() {
     assert.equal(
-      (new Embed('bitfinex', 'btcusd').src),
-      'https://embed.cryptowat.ch/bitfinex/btcusd'
+      (new Embed('bitfinex', 'btc/usd').src),
+      'https://embed.cryptowat.ch/markets/bitfinex/btc/usd'
     );
   });
 
   it('handles the timePeriod opt', function() {
     assert.equal(
-      (new Embed('bitfinex', 'btcusd', { timePeriod: '6H' }).src),
-      'https://embed.cryptowat.ch/bitfinex/btcusd/6h'
+      (new Embed('bitfinex', 'btc/usd', { timePeriod: '6H' }).src),
+      'https://embed.cryptowat.ch/markets/bitfinex/btc/usd/6h'
     );
 
     // Input should be case insensitive
     assert.equal(
-      (new Embed('okcoin', 'btccny', { timePeriod: '1w' }).src),
-      'https://embed.cryptowat.ch/okcoin/btccny/1w'
+      (new Embed('okcoin', 'btc/cny', { timePeriod: '1w' }).src),
+      'https://embed.cryptowat.ch/markets/okcoin/btc/cny/1w'
     );
   });
 
   it('handles the presetColorScheme opt', function() {
     assert.equal(
-      (new Embed('bitfinex', 'btcusd', { presetColorScheme: 'albuquerque' }).src),
-      'https://embed.cryptowat.ch/bitfinex/btcusd?presetColorScheme=albuquerque'
+      (new Embed('bitfinex', 'btc/usd', { presetColorScheme: 'albuquerque' }).src),
+      'https://embed.cryptowat.ch/markets/bitfinex/btc/usd?presetColorScheme=albuquerque'
     );
   });
 
   it('handles the presetColorScheme opt', function() {
     assert.equal(
-      (new Embed('bitfinex', 'btcusd', { presetColorScheme: 'albuquerque' }).src),
-      'https://embed.cryptowat.ch/bitfinex/btcusd?presetColorScheme=albuquerque'
+      (new Embed('bitfinex', 'btc/usd', { presetColorScheme: 'albuquerque' }).src),
+      'https://embed.cryptowat.ch/markets/bitfinex/btc/usd?presetColorScheme=albuquerque'
     );
   });
 
   it('handles the locale opt', function() {
     assert.equal(
-      (new Embed('quoine', 'btcjpy', { locale: 'ja-JP' }).src),
-      'https://embed.cryptowat.ch/quoine/btcjpy?locale=ja-JP'
+      (new Embed('quoine', 'btc/jpy', { locale: 'ja-JP' }).src),
+      'https://embed.cryptowat.ch/markets/quoine/btc/jpy?locale=ja-JP'
     );
   });
 
   it('handles the host and protocol opts', function() {
     assert.equal(
-      (new Embed('bitbank', 'btcusd', { locale: 'ja-JP', host: 'chart.bitbanktrade.jp', protocol: 'http' }).src),
-      'http://chart.bitbanktrade.jp/bitbank/btcusd?locale=ja-JP'
+      (new Embed('bitbank', 'btc/usd', { locale: 'ja-JP', host: 'chart.bitbanktrade.jp', protocol: 'http' }).src),
+      'http://chart.bitbanktrade.jp/markets/bitbank/btc/usd?locale=ja-JP'
     );
   });
 
   it('handles extra query opts', function() {
     assert.equal(
-      (new Embed('bitbank', 'btcusd', { locale: 'ja-JP', host: 'chart.bitbanktrade.jp', protocol: 'http', query: { branding: 'special' } }).src),
-      'http://chart.bitbanktrade.jp/bitbank/btcusd?locale=ja-JP&branding=special'
+      (new Embed('bitbank', 'btc/usd', { locale: 'ja-JP', host: 'chart.bitbanktrade.jp', protocol: 'http', query: { branding: 'special' } }).src),
+      'http://chart.bitbanktrade.jp/markets/bitbank/btc/usd?locale=ja-JP&branding=special'
     );
   });
 
@@ -75,7 +75,7 @@ describe('Embed', function () {
     };
 
     var encodedColors = encodeURIComponent(JSON.stringify(colors));
-    var embed = new Embed('bitfinex', 'btcusd', { customColorScheme: colors });
+    var embed = new Embed('bitfinex', 'btc/usd', { customColorScheme: colors });
     var uri = new URI(embed.src);
     var encodedColors = uri.query(true)['customColorScheme'];
     var decodedColors = JSON.parse(URI.decodeQuery(encodedColors));
@@ -96,13 +96,13 @@ describe('Embed', function () {
     window.visit('');
     document = window.document;
 
-    var embed = new Embed('bitfinex', 'btcusd');
+    var embed = new Embed('bitfinex', 'btc/usd');
     iframe = embed.createIframe();
 
     assert.equal(iframe.getAttribute('width'), '100%');
     assert.equal(iframe.getAttribute('height'), '100%');
 
-    var embed = new Embed('bitfinex', 'btcusd', { width: 500, height: 300 });
+    var embed = new Embed('bitfinex', 'btc/usd', { width: 500, height: 300 });
     iframe = embed.createIframe();
 
     assert.equal(iframe.getAttribute('width'), '500');
